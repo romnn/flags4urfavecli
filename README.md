@@ -1,20 +1,71 @@
 ## flags4urfavecli
 
 [![Build Status](https://travis-ci.com/romnnn/flags4urfavecli.svg?branch=master)](https://travis-ci.com/romnnn/flags4urfavecli)
-[![GitHub](https://img.shields.io/github/license/romnnn/flags4urfavecli)](https://github.com/romnnn/flags4urfavecli)[![GoDoc](https://godoc.org/github.com/romnnn/flags4urfavecli?status.svg)](https://godoc.org/github.com/romnnn/flags4urfavecli)[![Test Coverage](https://codecov.io/gh/romnnn/flags4urfavecli/branch/master/graph/badge.svg)](https://codecov.io/gh/romnnn/flags4urfavecli)
+[![GitHub](https://img.shields.io/github/license/romnnn/flags4urfavecli)](https://github.com/romnnn/flags4urfavecli)
+[![GoDoc](https://godoc.org/github.com/romnnn/flags4urfavecli?status.svg)](https://godoc.org/github.com/romnnn/flags4urfavecli)
+[![Test Coverage](https://codecov.io/gh/romnnn/flags4urfavecli/branch/master/graph/badge.svg)](https://codecov.io/gh/romnnn/flags4urfavecli)
 
-Your description goes here...
+Extends the [github.com/urfave/cli/v2](https://github.com/urfave/cli/v2) CLI package for golang with some useful flags and values you might want to use with your CLI.
+
+**Note:** This package is intended to be used with `v2` only!
 
 
-
-#### Usage as a library
+#### Usage
 
 ```golang
-import "github.com/romnnn/flags4urfavecli"
+import (
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/romnnn/flags4urfavecli/values"
+	"github.com/urfave/cli/v2"
+)
+
+func main() {
+	app := &cli.App{
+		Name:  "sample CLI app",
+		Usage: "This demonstrates the usage of additional flags",
+		Flags: []cli.Flag{
+			&cli.GenericFlag{
+				Name: "format",
+				Value: &values.EnumValue{
+					Enum:    []string{"json", "xml", "csv"},
+					Default: "xml",
+				},
+				EnvVars: []string{"FILEFORMAT"},
+				Usage:   "input file format",
+			},
+		},
+		Action: func(ctx *cli.Context) error {
+			fmt.Printf("Format is: %s\n", ctx.String("format"))
+			return nil
+		},
+	}
+	err := app.Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
-For more examples, see `examples/`.
+For more examples, see `examples/`. You can try the example above with:
+```bash
+go run github.com/romnnn/flags4urfavecli/examples/readme --format json
+```
 
+#### Extensions
+
+As of now, the following generic value wrappers are implemented:
+
+- `EnumValue`
+- `TimestampValue`
+
+Also, there are some commonly used pre-configured generic flags:
+
+- `LogLevelFlag`
+
+If you wrote your own, please feel free to share and submit a pull request!
 
 #### Development
 
