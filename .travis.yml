@@ -13,12 +13,12 @@ jobs:
   allow_failures:
     - go: tip
   fast_finish: true
-  
+
 install: true
 notifications:
   email: false
 before_script:
-  - pip install -U pip && pip install pre-commit invoke ruamel.yaml
+  - pip install -U pip && pip install pathlib pre-commit invoke ruamel.yaml
   - go get -u golang.org/x/lint/golint
   - go get github.com/fzipp/gocyclo
   - go get github.com/mitchellh/gox
