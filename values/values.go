@@ -49,13 +49,14 @@ type EnumValue struct {
 
 // Set ...
 func (e *EnumValue) Set(value string) error {
+	value = strings.TrimSpace(strings.ToLower(value))
 	for _, enum := range e.Enum {
-		if strings.ToLower(enum) == strings.ToLower(value) {
-			e.selected = strings.ToLower(value)
+		if strings.ToLower(enum) == value {
+			e.selected = value
 			return nil
 		}
 	}
-	return fmt.Errorf("allowed values are %s", strings.Join(e.Enum, ", "))
+	return fmt.Errorf("Unknown option: \"%s\". Allowed is one of %s", value, strings.Join(e.Enum, ", "))
 }
 
 func (e EnumValue) String() string {
@@ -63,4 +64,58 @@ func (e EnumValue) String() string {
 		return e.Default
 	}
 	return e.selected
+}
+
+// EnumListValue ...
+type EnumListValue struct {
+	Enum       []string
+	Default    []string
+	selected   []string
+	AllowEmpty bool
+}
+
+// Parse ...
+func (e EnumListValue) Parse(value string) []string {
+	return strings.Split(value, ",")
+}
+
+// Set ...
+func (e *EnumListValue) Set(value string) error {
+	enums := strings.Split(strings.ToLower(value), ",")
+	var validEnums []string
+	for _, enum := range enums {
+		enum = strings.TrimSpace(strings.ToLower(enum))
+		if enum == "" {
+			continue
+		}
+		valid := false
+		for _, availableEnum := range e.Enum {
+			if enum == strings.TrimSpace(strings.ToLower(availableEnum)) {
+				valid = true
+			}
+		}
+		if !valid {
+			return fmt.Errorf("Unknown option: \"%s\". Allowed values are %s", enum, strings.Join(e.Enum, ", "))
+		}
+		validEnums = append(validEnums, enum)
+	}
+	if !e.AllowEmpty && len(validEnums) < 1 {
+		return fmt.Errorf("Must specify at least one of: %s", strings.Join(e.Enum, ", "))
+	}
+	e.selected = validEnums
+	return nil
+}
+
+func (e EnumListValue) serialize(values []string) string {
+	for i := range values {
+		values[i] = strings.ToLower(strings.TrimSpace(values[i]))
+	}
+	return strings.Join(values, ",")
+}
+
+func (e EnumListValue) String() string {
+	if len(e.selected) < 1 {
+		return e.serialize(e.Default)
+	}
+	return e.serialize(e.selected)
 }
