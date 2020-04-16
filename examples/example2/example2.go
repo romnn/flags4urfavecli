@@ -17,15 +17,17 @@ func main() {
 			&cli.GenericFlag{
 				Name: "ducks",
 				Value: &values.EnumListValue{
-					Enum:    []string{"tick", "trick", "track"},
-					Default: []string{"trick"},
+					Enum:       []string{"tick", "trick", "track"},
+					Default:    []string{"trick"},
+					AllowEmpty: true,
 				},
 				EnvVars: []string{"DUCKS"},
 				Usage:   "An enum list only accepts comma separated enum values",
 			},
 		},
 		Action: func(ctx *cli.Context) error {
-			log.Infof("Ducks are: %s\n", values.EnumListValue{}.Parse(ctx.String("ducks")))
+			ducks := values.EnumListValue{}.Parse(ctx.String("ducks"))
+			log.Infof("Ducks are: %s (length %d)\n", ducks, len(ducks))
 			return nil
 		},
 	}
