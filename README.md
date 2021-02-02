@@ -1,6 +1,6 @@
 ## flags4urfavecli
 
-[![Build Status](https://travis-ci.com/romnn/flags4urfavecli.svg?branch=master)](https://travis-ci.com/romnn/flags4urfavecli)
+[![Build Status](https://github.com/romnn/flags4urfavecli/workflows/test/badge.svg)](https://github.com/romnn/flags4urfavecli/actions)
 [![GitHub](https://img.shields.io/github/license/romnn/flags4urfavecli)](https://github.com/romnn/flags4urfavecli)
 [![GoDoc](https://godoc.org/github.com/romnn/flags4urfavecli?status.svg)](https://godoc.org/github.com/romnn/flags4urfavecli)
 [![Test Coverage](https://codecov.io/gh/romnn/flags4urfavecli/branch/master/graph/badge.svg)](https://codecov.io/gh/romnn/flags4urfavecli)
