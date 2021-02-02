@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/romnnn/flags4urfavecli/values"
+	"github.com/romnn/flags4urfavecli/values"
 	"github.com/urfave/cli/v2"
 )
 

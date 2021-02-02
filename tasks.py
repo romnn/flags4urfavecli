@@ -13,7 +13,7 @@ import webbrowser
 
 yaml = YAML()
 
-PKG = "github.com/romnnn/flags4urfavecli"
+PKG = "github.com/romnn/flags4urfavecli"
 CMD_PKG = PKG
 
 

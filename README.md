@@ -1,9 +1,9 @@
 ## flags4urfavecli
 
-[![Build Status](https://travis-ci.com/romnnn/flags4urfavecli.svg?branch=master)](https://travis-ci.com/romnnn/flags4urfavecli)
-[![GitHub](https://img.shields.io/github/license/romnnn/flags4urfavecli)](https://github.com/romnnn/flags4urfavecli)
-[![GoDoc](https://godoc.org/github.com/romnnn/flags4urfavecli?status.svg)](https://godoc.org/github.com/romnnn/flags4urfavecli)
-[![Test Coverage](https://codecov.io/gh/romnnn/flags4urfavecli/branch/master/graph/badge.svg)](https://codecov.io/gh/romnnn/flags4urfavecli)
+[![Build Status](https://travis-ci.com/romnn/flags4urfavecli.svg?branch=master)](https://travis-ci.com/romnn/flags4urfavecli)
+[![GitHub](https://img.shields.io/github/license/romnn/flags4urfavecli)](https://github.com/romnn/flags4urfavecli)
+[![GoDoc](https://godoc.org/github.com/romnn/flags4urfavecli?status.svg)](https://godoc.org/github.com/romnn/flags4urfavecli)
+[![Test Coverage](https://codecov.io/gh/romnn/flags4urfavecli/branch/master/graph/badge.svg)](https://codecov.io/gh/romnn/flags4urfavecli)
 
 Extends the [github.com/urfave/cli/v2](https://github.com/urfave/cli/v2) CLI package for golang with some useful flags and values you might want to use with your CLI.
 
@@ -18,7 +18,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/romnnn/flags4urfavecli/values"
+	"github.com/romnn/flags4urfavecli/values"
 	"github.com/urfave/cli/v2"
 )
 
@@ -51,7 +51,7 @@ func main() {
 
 For more examples, see `examples/`. You can try the example above with:
 ```bash
-go run github.com/romnnn/flags4urfavecli/examples/readme --format json
+go run github.com/romnn/flags4urfavecli/examples/readme --format json
 ```
 
 #### Extensions

@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/romnnn/flags4urfavecli/flags"
-	"github.com/romnnn/flags4urfavecli/values"
+	"github.com/romnn/flags4urfavecli/flags"
+	"github.com/romnn/flags4urfavecli/values"
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
 )

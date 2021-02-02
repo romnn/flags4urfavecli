@@ -7,7 +7,7 @@ go:
 os:
   - linux
   - osx
-env: MOD=github.com/romnnn/flags4urfavecli BINARY=flags4urfavecli
+env: MOD=github.com/romnn/flags4urfavecli BINARY=flags4urfavecli
 
 jobs:
   allow_failures:

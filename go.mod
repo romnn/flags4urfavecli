@@ -1,4 +1,4 @@
-module github.com/romnnn/flags4urfavecli
+module github.com/romnn/flags4urfavecli
 
 go 1.13
 
